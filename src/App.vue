@@ -40,6 +40,7 @@
                 ref="grid"
                 :mode="mode"
                 @toggleLock="handleLockToggle"
+                @setTurnAi="handleSetAIturn"
             />
             <SplitButton :mode="mode" @gameMode="modeSwitch" />
             <WinBanner />
@@ -78,6 +79,9 @@ export default {
         this.resetGame();
     },
     methods: {
+        handleSetAIturn() {
+            this.turn = 1
+        },
         handleNextTurn() {
             this.turn = this.turn === -1 ? 1 : -1;
         },
@@ -94,7 +98,7 @@ export default {
         resetGame() {
             this.game = uuid();
             this.locked = false;
-            this.$refs.grid.handleReset(); // I don't like this....
+            this.$refs.grid.handleReset();
         },
         handleLockToggle() {
             this.locked = !this.locked;

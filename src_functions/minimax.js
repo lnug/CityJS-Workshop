@@ -1,6 +1,3 @@
-import net from './brain/model';
-import next from './brain/next';
-
 const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -53,6 +50,9 @@ const availableSpaces = (board) => {
 }
 
 function miniMax(newBoard, player) {
+
+
+  console.log(newBoard, player)
 
   let emptySpaces = availableSpaces(newBoard)
   
@@ -113,7 +113,6 @@ function miniMax(newBoard, player) {
 			}
 		}
   }
-  console.log(bestMove)
   return moves[bestMove];
 }
 
@@ -122,19 +121,9 @@ function miniMax(newBoard, player) {
 exports.handler = function(event, context, callback) {
 
   const board = JSON.parse(event.body)
-  console.log(board);
-  
-  moves=[]
-  if(true) {
-   
-    return callback(null, {
-      statusCode: 200,
-      body: JSON.stringify(next(board, net))
-    })
-  }
 
   callback(null, {
       statusCode: 200,
-      body: JSON.stringify(miniMax(board, aiPlayer))
+      body: JSON.stringify(miniMax(board, -1))
   })
 }

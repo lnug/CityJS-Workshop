@@ -116,7 +116,6 @@ export default {
             }
             if (!this.board[position]) {
         
-                // moves.addMove({ game: this.game, board: this.board, move: { cell: position, value: this.turn}});
                 this.board = this.board.map((el, index) => index === position ? this.turn : el);
 
                 if (this.mode === 'ai') {
@@ -127,8 +126,7 @@ export default {
                     this.$emit("turnSwitch");
                     moves.getAIMove(this.board)
                         .then(response => {
-                            console.log(response)
-                            const position = response.data
+                            const position = response.data.index
                             this.board = this.board.map((el, index) => index === position ? this.turn : el)
                             if(this.win()) {
                                 return
@@ -147,6 +145,9 @@ export default {
         handleReset() {
             this.board = Array(9).fill(0)
             this.won = null
+            if(this.mode === 'ai') {
+                this.$emit("setTurnAi");
+            }
         },
         win: function() {
             if (winContitions.find(

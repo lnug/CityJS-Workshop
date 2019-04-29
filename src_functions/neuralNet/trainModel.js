@@ -1,5 +1,5 @@
 const brain = require('brain.js/index')
-const someData = require('./data')
+const someData = require('../trainingData/multiLabel')
 const fs = require('fs')
 
 const betterData = someData.map(set => {
