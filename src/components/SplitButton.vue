@@ -41,7 +41,7 @@ export default {
     },
     methods: {
         handleClick: function() {
-            this.$emit('gameMode', this.gameMode)
+            this.$emit('gameMode')
         }
     }
 };
