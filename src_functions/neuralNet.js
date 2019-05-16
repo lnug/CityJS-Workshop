@@ -1,11 +1,10 @@
 import trainedNet from './neuralNet/trained-net';
 
 exports.handler = function(event, context, callback) {
-    let result = []
-    let board = JSON.parse(event.body)
-    const boardSum = board.reduce((a,b) => a + b, 0)
-
-    result = trainedNet(board)
+    const result = []
+    const board = JSON.parse(event.body)
+    const result = trainedNet(board)
+    
     console.log(result)
 
     const emptySpaces = board.map((space, index) => {
