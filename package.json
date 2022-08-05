@@ -16,7 +16,7 @@
     "axios": "^0.18.0",
     "brain.js": "^1.6.1",
     "dom-confetti": "^0.1.0",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.7.5",
     "uuid": "^3.3.2",
     "vue": "^2.6.6"
   },
